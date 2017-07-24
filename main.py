@@ -4,9 +4,14 @@ from converter import *
 app = Flask(__name__)
 
 
-@app.route('/', methods=['GET'])
-def download():
-    data = download_audio(request.args.get('vid'))
+@app.route('/audio', methods=['GET'])
+def downloadAudio():
+    data = download_audio(request.args.get('id'))
+    return jsonify(data)
+
+@app.route('/video', methods=['GET'])
+def downloadVideo():
+    data = download_video(request.args.get('id'))
     return jsonify(data)
 
 
